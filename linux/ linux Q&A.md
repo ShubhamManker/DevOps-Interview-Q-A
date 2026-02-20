@@ -2,6 +2,7 @@
 
 The kernel version can be checked using uname -r, while OS and distribution details are found in /etc/os-release.
 This information is important for troubleshooting compatibility and package issues.
+
 2. How do you list all files including hidden files?
 
 ls -la
