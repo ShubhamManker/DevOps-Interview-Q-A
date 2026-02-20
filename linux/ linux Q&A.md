@@ -36,6 +36,7 @@ Files can be located using:
 
 find /path -name filename for real-time search
 locate filename for faster, database-based search
+
 8. How do you check disk usage on a Linux system?
 
 df -h shows filesystem usage
@@ -47,6 +48,7 @@ These commands are essential for diagnosing disk space issues.
 Check disk usage using df -h
 Identify large directories with du -sh *
 Remove unnecessary files or rotate logs
+
 10. How do you check memory usage?
 
 free -h
@@ -85,6 +87,7 @@ This error usually occurs when the user does not have the required access rights
 File permissions: Use ls -l to verify read, write, and execute permissions for the owner, group, and others.
 File ownership: Check whether the file is owned by the correct user or group and correct it using chown if required.
 SELinux or AppArmor policies: Even with correct permissions, mandatory access control may block access; verify enforcement status and logs to identify policy restrictions.
+
 17. How do you create a new user in Linux?
 
 useradd username
@@ -96,6 +99,7 @@ User creation is a common administrative task.
 Account expiration or lock
 Incorrect login shell
 Password expiry
+
 19. How do you check system uptime and load average?
 
 uptime
@@ -140,6 +144,7 @@ This helps quickly isolate the root cause.
 
 A symbolic link is a pointer to another file or directory.
 It is commonly used to manage file paths, versioned directories, and application configurations without changing the actual files.
+
 26. How do you create a symbolic link in Linux?
 
 You create a symbolic link using:
@@ -205,6 +210,7 @@ This helps avoid boot-time failures.
 
 LVM provides flexible disk management, allowing volumes to be resized without downtime.
 It simplifies storage expansion, snapshots, and recovery compared to fixed partitions.
+
 34. How do you extend a logical volume and filesystem?
 
 Typical steps include:
@@ -218,6 +224,7 @@ Most modern filesystems support online resizing.
 Identify the affected filesystem using df -h
 Locate large files using du -sh * or ncdu
 Check log growth and application dumps
+
 36. How do you manage and control services in systemd?
 
 Systemd services are managed using systemctl:
@@ -249,10 +256,12 @@ Port listening status
 Firewall rules
 SELinux enforcement
 Application configuration
+
 40. What is SELinux and how do you check its status?
 
 SELinux enforces mandatory access control policies.
 Check status using getenforce or sestatus.
+
 41. How do you temporarily and permanently change kernel parameters?
 
 Temporary: sysctl -w parameter=value
@@ -265,6 +274,7 @@ Common tools include:
 
 top / htop for live monitoring
 vmstat, iostat, iotop for deeper analysis
+
 43. How do you copy files securely between servers?
 
 scp file user@server:/path
@@ -277,6 +287,7 @@ rsync is preferred for large or repeated transfers.
 
 rsync transfers only changed data and supports compression and resume.
 This makes it faster and more efficient for backups and sync jobs.
+
 45. How do you configure passwordless SSH access?
 
 Generate keys using ssh-keygen
@@ -294,14 +305,17 @@ Cron service status
 Script permissions
 Absolute paths inside the script
 Cron logs
+
 48. How do you rotate logs in Linux?
 
 Log rotation is handled using logrotate.
 It prevents logs from consuming excessive disk space.
+
 49. How do you identify zombie processes?
 
 Zombie processes appear with state Z in ps aux.
 They indicate a parent process issue and do not consume resources.
+
 50. How do you troubleshoot high load average?
 
 Check CPU usage and runnable processes
@@ -319,10 +333,12 @@ NFS is commonly used for shared storage.
 
 Time synchronization is handled using chrony or systemd-timesyncd.
 Accurate time is critical for logs and authentication.
+
 53. What is swap and when should it be used?
 
 Swap provides additional virtual memory when RAM is exhausted.
 It helps prevent crashes but should not replace physical memory.
+
 54. How do you add a swap file?
 
 Steps include:
@@ -331,15 +347,18 @@ Create file using fallocate
 Set permissions
 Format with mkswap
 Enable using swapon
+
 55. How do you troubleshoot DNS resolution issues?
 
 Check /etc/resolv.conf
 Use dig or nslookup
 Verify network and firewall rules
+
 56. What is /proc filesystem used for?
 
 /proc is a virtual filesystem that provides kernel and process information.
 It is commonly used for monitoring and tuning.
+
 57. How do you limit resource usage for a user or process?
 
 Resource limits can be set using:
@@ -347,10 +366,12 @@ Resource limits can be set using:
 ulimit
 /etc/security/limits.conf
 systemd service limits
+
 58. A system rebooted unexpectedly. How do you investigate?
 
 Check previous boot logs using journalctl -b -1
 Review system logs and hardware messages
+
 59. How do you check which files are consuming the most space?
 
 du -sh * | sort -h
@@ -391,10 +412,12 @@ This approach helps isolate the issue quickly without assumptions.
 
 High load average can be caused by CPU saturation, blocked I/O, or stuck processes.
 I always correlate load average with CPU usage, I/O wait, memory pressure, and process states before concluding the root cause.
+
 64. How do you perform zero-downtime deployments on Linux servers?
 
 Zero-downtime deployments are achieved by updating systems incrementally rather than all at once.
 Common strategies include rolling deployments, blue-green setups, and traffic shifting through load balancers to ensure users are never impacted.
+
 65. How do you investigate kernel panic issues?
 
 Kernel panic investigation involves collecting and analyzing crash data:
@@ -408,14 +431,17 @@ This helps identify hardware issues, driver bugs, or kernel-level failures.
 
 Network tuning includes adjusting TCP buffers, connection limits, and kernel networking parameters.
 All changes must be tested under realistic load conditions to ensure performance gains without introducing instability.
+
 67. How do you manage Linux systems at scale?
 
 At scale, manual configuration does not work.
 Systems are managed using configuration management tools, Infrastructure as Code, and standardized base images to ensure consistency and reduce configuration drift.
+
 68. How do you identify and fix configuration drift?
 
 Configuration drift is detected by comparing the actual system state with the desired state defined in automation tools.
 It is fixed and prevented through continuous enforcement using configuration management and immutable infrastructure practices.
+
 69. A service works after restart but fails again later. How do you debug this?
 
 This usually indicates a recurring underlying issue rather than a one-time failure:
@@ -432,6 +458,7 @@ Firstly identify the source application and verify log rotation:
 Ensure logrotate is configured
 Reduce log verbosity if needed
 Compress or archive old logs
+
 71. A server suddenly becomes slow during peak hours. How do you troubleshoot?
 
 Start by checking real-time resource usage using:
@@ -439,6 +466,7 @@ Start by checking real-time resource usage using:
 top
 If CPU usage is normal, then check I/O wait and memory pressure using vmstat and iostat.
 This helps determine whether the issue is CPU-bound, memory-bound, or disk-related.
+
 72. Disk space on /var is 100% full. What steps do you take?
 
 First, Identify what is consuming space:
@@ -489,22 +517,27 @@ SSH service status
 Firewall rules on port 22
 Authentication logs (/var/log/auth.log or journalctl)
 Disk space (SSH can fail if disk is full)
+
 78. A filesystem needs to be expanded without downtime. What do you do?
 
 If LVM is used, I extend the logical volume and then resize the filesystem online.
 This allows expansion without unmounting or impacting running services.
+
 79. A service crashes after running for several hours. How is this issue debugged?
 
 This behavior often points to memory leaks, resource exhaustion, or unstable dependencies.
 The issue is analyzed by monitoring memory and resource usage over time and reviewing service logs instead of repeatedly restarting the service.
+
 80. A system shows a high load average but low CPU usage. What does this indicate?
 
 This typically indicates I/O wait or processes blocked on disk or network operations.
 Disk and process monitoring tools are used to confirm whether the load is caused by waiting tasks rather than CPU saturation.
+
 81. How do you troubleshoot performance issues without restarting services?
 
 Live troubleshooting involves analyzing processes, memory usage, I/O, and thread behavior using profiling and tracing tools.
 Restarting services is treated as a last resort after diagnosis.
+
 82. How do you handle database-related outages from the OS perspective?
 
 From the OS side, I verify:
@@ -518,6 +551,7 @@ Once OS health is confirmed, application and database teams are involved.
 
 Scalable systems are designed to be stateless where possible.
 They scale horizontally, use automation for provisioning, and rely on load balancing rather than vertical growth.
+
 84. How do you validate system changes before production rollout?
 
 Changes are validated through:
@@ -531,22 +565,27 @@ This minimizes production risk.
 
 Blast radius is reduced by isolating services, deploying changes progressively, and containing failures to the smallest possible scope.
 This prevents localized issues from becoming system-wide outages.
+
 86. How do you manage on-call responsibilities effectively?
 
 Effective on-call management includes clear escalation paths, well-documented runbooks, and post-incident reviews.
 The goal is fast resolution and continuous improvement, not burnout.
+
 87. How do you investigate suspected security breaches?
 
 Security incidents are handled by isolating affected systems, analyzing logs and forensic data, rotating credentials, and patching vulnerabilities.
 Systems are often rebuilt rather than patched in place.
+
 88. How do you balance performance, cost, and reliability?
 
 This balance is achieved through right-sizing resources, autoscaling where possible, and continuous monitoring.
 Decisions are driven by data rather than assumptions.
+
 89. How do you mentor junior Linux engineers?
 
 Mentorship includes reviewing configurations, sharing operational knowledge, and encouraging automation and ownership.
 The goal is to build independent and reliable engineers.
+
 90. How do you stay updated with Linux and infrastructure changes?
 
 I stay updated by reading release notes, following upstream communities, and continuously experimenting in lab or non-production environments.
